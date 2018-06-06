@@ -71,7 +71,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     switchoffLD = accread$switchoffLD
     options(warn=0) #turn on warnings
     
-    print(P$rawxyz[1:5,])
+ 
     
     #process data as read from binary file
     if (length(P) > 0) { #would have been set to zero if file was corrupt or empty
@@ -100,6 +100,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           }
           data = as.matrix(data[1:use,])
           LD = nrow(data) #redefine LD because there is less data
+          print(data[1:5,]
           ##==================================================
           dur = nrow(data)	#duration of experiment in data points
           durexp = nrow(data) / (sf*ws)	#duration of experiment in hrs
@@ -144,6 +145,8 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
               use.temp = FALSE
             }
           }
+          print(data[1:5,])
+         
           #=============================================
           # non-integer sample frequency is a pain for deriving epoch based sd
           # however, with an epoch of 10 seconds it is an integer number of samples per epoch
@@ -396,5 +399,5 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
                  cal.error.start=cal.error.start,cal.error.end=cal.error.end,
                  spheredata=spheredata,npoints=npoints,nhoursused=nhoursused,
                  QCmessage=QCmessage,use.temp=use.temp,meantempcal=meantempcal,bsc_qc=bsc_qc))
-  print(P$rawxyz[1:5,])
+  
 }
