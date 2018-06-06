@@ -393,5 +393,5 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
                  cal.error.start=cal.error.start,cal.error.end=cal.error.end,
                  spheredata=spheredata,npoints=npoints,nhoursused=nhoursused,
                  QCmessage=QCmessage,use.temp=use.temp,meantempcal=meantempcal,bsc_qc=bsc_qc))
-  print(data.out)
+  print(data[1:5,])
 }
