@@ -62,7 +62,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     
     accread = g.readaccfile(filename=datafile,blocksize=blocksize,blocknumber=i,
                             selectdaysfile = selectdaysfile,filequality=filequality,
-                            decn=decn,dayborder=dayborder,ws=ws, downsample=2)
+                            decn=decn,dayborder=dayborder,ws=ws)
     P = accread$P
     filequality = accread$filequality
     filetooshort = filequality$filetooshort
@@ -81,6 +81,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         data = P$rawxyz #change scalling for Axivity?
       } else if (mon == 2  & dformat == 1) {
         data = P$data.out
+        print(data[1:6,])
       } else if (dformat == 2) {
         data = as.matrix(P)
       } else if (dformat == 4) {
