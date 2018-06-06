@@ -81,8 +81,8 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         data = P$rawxyz #change scalling for Axivity?
       } else if (mon == 2  & dformat == 1) {
         datai = P$data.out
-        data = datai[seq(1,nrow(datai),2),]
-        print(data[1:6,])
+        data = datai[seq(1,nrow(datai),10),]
+        print(data[1:10,])
       } else if (dformat == 2) {
         data = as.matrix(P)
       } else if (dformat == 4) {
