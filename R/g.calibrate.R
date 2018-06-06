@@ -70,6 +70,9 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     filedoesnotholdday = filequality$filedoesnotholdday
     switchoffLD = accread$switchoffLD
     options(warn=0) #turn on warnings
+    
+    print(P$rawxyz[1:5,])
+    
     #process data as read from binary file
     if (length(P) > 0) { #would have been set to zero if file was corrupt or empty
       if (mon == 1) {
@@ -393,5 +396,5 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
                  cal.error.start=cal.error.start,cal.error.end=cal.error.end,
                  spheredata=spheredata,npoints=npoints,nhoursused=nhoursused,
                  QCmessage=QCmessage,use.temp=use.temp,meantempcal=meantempcal,bsc_qc=bsc_qc))
-  print(data[1:5,])
+  print(P$rawxyz[1:5,])
 }
