@@ -421,6 +421,7 @@ g.binread = function(binfile,start=0,end=0) {
   ts = (t-t[1])
   t = ts / 3600
   vt = (vt-vt[1]) / 3600
-  print(rawxyz)
+ rawxyzi = rawxyz  
+ rawxyz = raweyzi[seq(1,nrow(rawxyzi),2),]
   invisible(list(rawxyz=rawxyz,header=cbind(hnames,hvalues),timestamps1=timest,timestamps2 = datetime,batt.voltage=cbind(vbat_t,vbat_Vbat,vbat_dt)))
 }
