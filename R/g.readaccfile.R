@@ -245,5 +245,5 @@ g.readaccfile = function(filename,blocksize,blocknumber,selectdaysfile=c(),fileq
  
   
   invisible(list(P=P,filequality=filequality, switchoffLD = switchoffLD))
-  print(P)
+  
 }
