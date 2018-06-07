@@ -243,7 +243,6 @@ g.readaccfile = function(filename,blocksize,blocknumber,selectdaysfile=c(),fileq
     }
   }
   print(P)
-  z <<- P
   
   invisible(list(P=P,filequality=filequality, switchoffLD = switchoffLD))
 }
