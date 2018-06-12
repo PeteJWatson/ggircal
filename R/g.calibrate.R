@@ -80,6 +80,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         #data = P$rawxyz / 1000 #convert g output to mg for genea
         dataj = P$rawxyz
         data = dataj[seq(1,nrow(dataj),2),]
+        print(data[1:10,])
       } else if (mon == 4 & dformat == 3) {
         data = P$rawxyz #change scalling for Axivity?
       } else if (mon == 2  & dformat == 1) {
@@ -92,6 +93,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         #data = as.matrix(P)
         dataj = as.matrix(P)
         data = dataj[seq(1,nrow(dataj),2),]
+        print(data[1:10,])
       } else if (dformat == 4) {
         data = P$data
       }
