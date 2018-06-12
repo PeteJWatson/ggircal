@@ -85,9 +85,9 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         data = P$rawxyz #change scalling for Axivity?
       } else if (mon == 2  & dformat == 1) {
         # GENE monitor & Binary format (bin file)
-        data = P$data.out
-        #datai = P$data.out
-        #data = datai[seq(1,nrow(datai),10),]
+        #data = P$data.out
+        datai = P$data.out
+        data = datai[seq(1,nrow(datai),10),]
         print(data[1:10,])
       } else if (dformat == 2) {
         data = as.matrix(P)
