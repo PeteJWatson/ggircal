@@ -88,7 +88,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         #data = P$data.out
         datai = P$data.out
         data = datai[seq(1,nrow(datai),2),]
-        print(data[1:5,])
+        print(data[1:10,])
       } else if (dformat == 2) {
         data = as.matrix(P)
         #dataj = as.matrix(P)
