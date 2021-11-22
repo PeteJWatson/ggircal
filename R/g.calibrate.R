@@ -78,7 +78,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     if (length(P) > 0) { #would have been set to zero if file was corrupt or empty
       if (mon == 1) {
         #data = P$rawxyz / 1000 #convert g output to mg for genea
-        dataj = P$rawxyz / 1000
+        dataj = P$rawxyz
         data = dataj[seq(1,nrow(dataj),2),]
         print(data[1:10,])
       } else if (mon == 4 & dformat == 3) {
