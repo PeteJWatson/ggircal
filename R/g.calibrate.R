@@ -77,28 +77,24 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     #process data as read from binary file
     if (length(P) > 0) { #would have been set to zero if file was corrupt or empty
       if (mon == 1) {
-        #data = P$rawxyz / 1000 #convert g output to mg for genea
-        dataj = P$rawxyz / 1000
-        data = dataj[seq(1,nrow(dataj),2),]
-        print(data[1:10,])
-        write.csv(data,file="data.csv")
-
+        data = P$rawxyz / 1000 #convert g output to mg for genea
+        #dataj = P$rawxyz
+        #data = dataj[seq(1,nrow(dataj),2),]
+        #print(data[1:10,])
       } else if (mon == 4 & dformat == 3) {
         data = P$rawxyz #change scalling for Axivity?
       } else if (mon == 2  & dformat == 1) {
         # GENE monitor & Binary format (bin file)
-        data = P$data.out
-        #datai = P$data.out
-        #print(datai)
-        #data = datai[seq(1,nrow(datai),2),]
-       
-        #print(data[1:21,])
-        #write.csv(data,file="data.csv")
+        #data = P$data.out
+        datai = P$data.out
+        #10hz
+        data = datai[seq(1,nrow(datai),10),]
+        print(data[1:50,])
       } else if (dformat == 2) {
-        #data = as.matrix(P)
-        dataj = as.matrix(P)
-        data = dataj[seq(1,nrow(dataj),2),]
-        print(data[1:10,])
+        data = as.matrix(P)
+        #dataj = as.matrix(P)
+        #data = dataj[seq(1,nrow(dataj),2),]
+        #print(data[1:10,])
       } else if (dformat == 4) {
         data = P$data
       }
@@ -106,7 +102,6 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
       if (min(dim(S)) > 1) {
         data = rbind(S,data)
       }
-      write.csv(data,file="data.csv")
       LD = nrow(data)
       #store data that could not be used for this block, but will be added to next block
       use = (floor(LD / (ws*sf))) * (ws*sf) #number of datapoint to use
@@ -117,7 +112,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           }
           data = as.matrix(data[1:use,])
           LD = nrow(data) #redefine LD because there is less data
-          
+          write.csv(data,file="dataout.csv")
           ##==================================================
           dur = nrow(data)	#duration of experiment in data points
           durexp = nrow(data) / (sf*ws)	#duration of experiment in hrs
