@@ -87,7 +87,9 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         # GENE monitor & Binary format (bin file)
         #data = P$data.out
         datai = P$data.out
+        print(datai)
         data = datai[seq(1,nrow(datai),2),]
+        write.csv(data,file="data.csv")
         print(data[1:21,])
       } else if (dformat == 2) {
         #data = as.matrix(P)
@@ -157,7 +159,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
             }
           }
          
-          write.csv(timeseries,file="data.csv")
+          
           #=============================================
           # non-integer sample frequency is a pain for deriving epoch based sd
           # however, with an epoch of 10 seconds it is an integer number of samples per epoch
