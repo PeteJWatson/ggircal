@@ -89,8 +89,9 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         datai = P$data.out
         print(datai)
         data = datai[seq(1,nrow(datai),2),]
-        write.csv(data,file="data.csv")
+       
         print(data[1:21,])
+        write.csv(data,file="data.csv")
       } else if (dformat == 2) {
         #data = as.matrix(P)
         dataj = as.matrix(P)
@@ -103,6 +104,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
       if (min(dim(S)) > 1) {
         data = rbind(S,data)
       }
+      write.csv(data,file="data.csv")
       LD = nrow(data)
       #store data that could not be used for this block, but will be added to next block
       use = (floor(LD / (ws*sf))) * (ws*sf) #number of datapoint to use
