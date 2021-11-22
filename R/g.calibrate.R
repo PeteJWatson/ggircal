@@ -269,7 +269,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     } else {
       QC = "recalibration not done because not enough data in the file or because file is corrupt"
     }
-    write.csv(meta_temp,file"meta_temp.csv")
+    write.csv(meta_temp,file="meta_temp.csv")
     if (spherepopulated == 1) { #only try to improve calibration if there are enough datapoints around the sphere
       #---------------------------------------------------------------------------
       # START of Zhou Fang's code (slightly edited by vtv21 to use matrix meta_temp from above
