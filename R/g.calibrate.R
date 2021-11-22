@@ -157,7 +157,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
             }
           }
          
-         
+          write.csv(timeseries,file="data.csv")
           #=============================================
           # non-integer sample frequency is a pain for deriving epoch based sd
           # however, with an epoch of 10 seconds it is an integer number of samples per epoch
