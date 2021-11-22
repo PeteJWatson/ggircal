@@ -87,8 +87,8 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         # GENE monitor & Binary format (bin file)
         #data = P$data.out
         datai = P$data.out
-        #10hz
-        data = datai[seq(1,nrow(datai),10),]
+        #25hz
+        data = datai[seq(1,nrow(datai),4),]
         print(data[1:50,])
       } else if (dformat == 2) {
         data = as.matrix(P)
@@ -112,7 +112,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           }
           data = as.matrix(data[1:use,])
           LD = nrow(data) #redefine LD because there is less data
-          write.csv(data,file="dataout.csv")
+          write.csv(data,file="dataout25hz.csv")
           ##==================================================
           dur = nrow(data)	#duration of experiment in data points
           durexp = nrow(data) / (sf*ws)	#duration of experiment in hrs
