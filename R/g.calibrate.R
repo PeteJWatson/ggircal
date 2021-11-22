@@ -112,8 +112,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           }
           data = as.matrix(data[1:use,])
           LD = nrow(data) #redefine LD because there is less data
-          #write 25hz to csv (not calibrated just downsampled)
-          write.csv(data,file="dataout25hz.csv")
+        
           ##==================================================
           dur = nrow(data)	#duration of experiment in data points
           durexp = nrow(data) / (sf*ws)	#duration of experiment in hrs
@@ -270,6 +269,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     } else {
       QC = "recalibration not done because not enough data in the file or because file is corrupt"
     }
+    write.csv(meta_temp,file"meta_temp.csv")
     if (spherepopulated == 1) { #only try to improve calibration if there are enough datapoints around the sphere
       #---------------------------------------------------------------------------
       # START of Zhou Fang's code (slightly edited by vtv21 to use matrix meta_temp from above
@@ -337,7 +337,8 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           scale(yy, center = rep(meantemp,3), scale = 1/tempoffset)
       }     #equals: D2[,axis] = (D[,axis] + offset[axis]) / (1/scale[axis])
       # END of Zhou Fang's code
-      write.csv(meta_temp2,file="calibrated.csv")
+       write.csv(meta_temp2,file="metatemp2.csv")
+
       #-------------------------------------------
       cal.error.end = sqrt(meta_temp2[,1]^2 + meta_temp2[,2]^2 + meta_temp2[,3]^2)
       cal.error.end = mean(abs(cal.error.end-1))
@@ -376,6 +377,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
   } else {
     spheredata = c()
   }
+  write.csv(spheredata,file="d.csv")
   QCmessage = QC
   if (printsummary == TRUE) {
     cat("\n----------------------------------------\n")
