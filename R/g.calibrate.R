@@ -85,11 +85,11 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
         data = P$rawxyz #change scalling for Axivity?
       } else if (mon == 2  & dformat == 1) {
         # GENE monitor & Binary format (bin file)
-        #data = P$data.out
-        datai = P$data.out
+        data = P$data.out
+        #datai = P$data.out
         #25hz
-        data = datai[seq(1,nrow(datai),4),]
-        print(data[1:50,])
+        #data = datai[seq(1,nrow(datai),4),]
+        #print(data[1:50,])
       } else if (dformat == 2) {
         data = as.matrix(P)
         #dataj = as.matrix(P)
@@ -112,6 +112,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           }
           data = as.matrix(data[1:use,])
           LD = nrow(data) #redefine LD because there is less data
+          #write 25hz to csv (not calibrated just downsampled)
           write.csv(data,file="dataout25hz.csv")
           ##==================================================
           dur = nrow(data)	#duration of experiment in data points
@@ -336,6 +337,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
           scale(yy, center = rep(meantemp,3), scale = 1/tempoffset)
       }     #equals: D2[,axis] = (D[,axis] + offset[axis]) / (1/scale[axis])
       # END of Zhou Fang's code
+      write.csv(meta_temp2,file="calibrated.csv")
       #-------------------------------------------
       cal.error.end = sqrt(meta_temp2[,1]^2 + meta_temp2[,2]^2 + meta_temp2[,3]^2)
       cal.error.end = mean(abs(cal.error.end-1))
