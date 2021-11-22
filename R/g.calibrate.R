@@ -221,6 +221,7 @@ g.calibrate = function(datafile,use.temp=TRUE,spherecrit=0.3,minloadcrit=72,prin
     if (switchoffLD == 1) {
       LD = 0
     }
+    write.csv(meta,file="meta.csv")
     meta_temp = data.frame(V = meta)
     cut = which(meta_temp[,1] == 99999)
     if (length(cut) > 0) {
